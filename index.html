@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiDiary</title>
+    <link rel="stylesheet" href="/static/diary.css">
+</head>
+<body>
+    <div class="header">
+        <img src="/static/finallogo.jpeg">
+        <h3><span>D</span>igi<span>D</span>iary</h3>
+    </div>
+    <div class="content">
+        <p class="heading">Welcome Back! Your Digital Diary!</p>
+        <p class="para"> Write Safe      -       Create Memories </p>
+         <p class="tags"><i>"Every day deserves a page </i>
+        <div class="next"> <i>Write your thoughts. Keep them safe."</i> </div></p>
+        <h6> Create with <span> DigiDiary. </span></h6>
+        <button class="login"> 
+            <a href="{{url_for('login')}}">
+                Login  </a> </button>
+        <button class="create"> 
+            <a href="{{url_for('register')}}">
+            Create Account </a> </button>
+    </div>
+</body>
+</html>
