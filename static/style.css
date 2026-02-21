@@ -1,0 +1,280 @@
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    font-family: poppins;
+}
+header{
+    margin-top: 30px;
+    width: 99%;
+    height: 60px;
+    border: 2px solid white;
+    box-shadow: 3px 3px 5px grey;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    position: fixed;
+}
+#month{
+    margin-left:900px;
+    margin-top: 19px;
+}
+select{
+    width: 150%;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 25px;
+    padding-left: 10px;
+    border: 1px solid black;
+}
+img{
+    width: 7%;
+    position: absolute;
+    top: 5px;
+    height: 50px;
+}
+header h3{
+    padding-left: 85px;
+    color: black;
+    font-weight: bold;
+    margin-top: 7px;
+}
+header h3 span{
+    font-family: cursive;
+    font-size: 25px;
+    font-weight: bold;
+}
+#add button{
+    position: absolute;
+    position: fixed;
+    top:500px;
+    left: 1200px;
+    width: 5%;
+    height: 3rem;
+    border-radius: 50%;
+    box-shadow:2px 2px 8px grey ;
+    border: 2px solid white;
+    background-color: rgb(190, 4, 4);
+    color: white;
+    font-size: 25px;
+}
+.entries {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    padding-top: 150px;
+}
+.diary-box {
+    border: 1px solid white;
+    padding: 15px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 3px 3px 6px grey;
+}
+.buttons {
+    display: flex;
+    margin-top: 10px;
+}
+#box{
+    background-color: rgb(1, 66, 92);
+    width: 40%;
+    height: 60%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin-top: 150px;
+    margin-left: 400px;
+    display: none;
+}
+#close{
+    margin-left: 500px;
+    margin-top: 5px;
+    border: none;
+    background-color: inherit;
+    color: white;
+    font-size: 20px;
+}
+#close:hover{
+    color: grey;
+}
+#form{
+    padding: 50px;
+    color: white;
+    display: none;
+}
+label{
+    margin-left: 3px;
+}
+input[type=text]{
+    margin-left: 20px;
+    border: none;
+    background-color: inherit;
+    box-shadow: 0 2px 0 black;
+    padding-left: 20px;
+    color: white;
+}
+input[type=text]:focus{
+    border: none;
+    outline: none;
+}
+textarea{
+    background-color: rgb(245, 119, 17);
+    color: white;
+    margin-top: 20px;
+    border: inherit;
+    padding-left: 20px;
+    padding-top: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px grey;
+}
+textarea::placeholder{
+    color: white;
+}
+#new{
+    margin-left: 170px;
+    margin-top: 15px;
+    width: 25%;
+    height: 30px;
+    background-color: blue;
+    color: white;
+    border: inherit;
+    transition: all ease-in 0.3s;
+}
+#new:hover{
+    transform: scale(0.9);
+}
+#edit_box{
+    background-color: rgb(1, 66, 92);
+    width: 40%;
+    height: 60%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin-top: 150px;
+    margin-left: 400px;
+}
+#close{
+    margin-left: 500px;
+    margin-top: 5px;
+    border: none;
+    background-color: inherit;
+    color: white;
+    font-size: 20px;
+}
+#close:hover{
+    color: grey;
+}
+#edit_form{
+    padding: 50px;
+    color: white;
+}
+label{
+    margin-left: 3px;
+}
+input[type=text]{
+    margin-left: 20px;
+    border: none;
+    background-color: inherit;
+    box-shadow: 0 2px 0 black;
+    padding-left: 20px;
+    color: white;
+}
+input[type=text]:focus{
+    border: none;
+    outline: none;
+}
+textarea{
+    background-color: rgb(245, 119, 17);
+    color: white;
+    margin-top: 20px;
+    border: 1px solid white;
+    padding-left: 20px;
+    padding-top: 10px;
+    box-shadow: 2px 2px 10px grey;
+}
+#new_edit{
+    margin-left: 180px;
+    margin-top: 15px;
+    width: 25%;
+    height: 30px;
+    background:linear-gradient(90deg,skyblue,darkblue);
+    color: white;
+    border: inherit;
+    transition: all ease-in 0.3s;
+}
+#new_edit:hover,
+#edit-btn:hover,
+#dlt:hover,
+#copy:hover{
+    transform: scale(0.9);
+}
+#edit-btn{
+    color: blue;
+    border: inherit;
+    transition: all ease-in 0.3s;
+    border-radius: 25px;
+    margin-left: 300px;
+}
+#dlt{
+   margin-left: 10px;
+   color: red;
+   border: inherit;
+   transition: all ease-in 0.3s;
+   border-radius: 25px;
+}
+h3{
+    font-size: 15px;
+}
+.user-logo{
+    margin-top: 2px;
+    width: 3%;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow:2px 2px 5px grey ;
+    padding: 5px;
+    background-color: rgb(6, 19, 63);
+    position: absolute;
+    left: 1260px;
+}
+.user-logo p{
+   margin-left: 12px;
+   font-size: 20px;
+   margin-top: 6px;
+   cursor: pointer;
+}
+#user-info{
+    position: absolute;
+    top:150px;
+    left: 1040px;
+    border: 2px solid grey;
+    box-shadow: 10px 5px 15px grey;
+    width: 20%;
+    padding: 20px;
+    border-radius: 25px;
+    display: none;
+    z-index: 3;
+    opacity: 0.8;
+    background-color: white;
+}
+#user-info p{
+    margin-left: 60px;
+    font-size: 13px;
+}
+#user-info h4{
+    margin-left: 85px;
+}
+#logout{
+    margin-left: 80px;
+    width: 50%;
+    height: 40px;
+    border-radius: 25px;
+    border: 2px solid grey;
+    font-weight: bold;
+}
+#infoclose{
+    border: none;
+    font-size: 20px;
+    margin-left: 240px;
+    border-radius: 50%;
+}
