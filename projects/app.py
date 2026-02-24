@@ -5,7 +5,7 @@ from flask_bcrypt import Bcrypt
 from sqlalchemy.exc import IntegrityError
 
 app = Flask(__name__)
-app.secret_key = "12345"
+app.secret_key = "something_12345"
 bcrypt=Bcrypt(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:Krishnapriya22@localhost/my_diary"
@@ -105,3 +105,4 @@ def logout():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
