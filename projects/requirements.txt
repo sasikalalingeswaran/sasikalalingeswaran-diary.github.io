@@ -1,0 +1,6 @@
+Flask
+gunicorn
+Flask_Migrate
+Flask_SQLAlchemy
+Flask_Bcrypt
+cryptography
