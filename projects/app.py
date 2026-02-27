@@ -3,6 +3,7 @@ from model import db, diary_login,Diary
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from sqlalchemy.exc import IntegrityError
+import os
 
 app = Flask(__name__)
 app.secret_key = "something_12345"
@@ -106,6 +107,7 @@ def logout():
 
 if __name__ == "__main__":
     app.run()
+
 
 
 
