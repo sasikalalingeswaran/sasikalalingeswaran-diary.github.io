@@ -5,4 +5,3 @@ Flask_SQLAlchemy
 Flask_Bcrypt
 cryptography
 pymysql
-os
