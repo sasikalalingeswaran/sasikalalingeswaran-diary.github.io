@@ -10,6 +10,7 @@ bcrypt=Bcrypt(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:Krishnapriya22@localhost/my_diary"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("postgresql://diary_db_dgut_user:YLCEmEXFvAg6FQqMTGCr5LlC2YIo9ik1@dpg-d6g5g4kr85hc73b6fe2g-a/diary_db_dgut")
 
 db.init_app(app)
 migrate = Migrate(app,db)
@@ -105,5 +106,6 @@ def logout():
 
 if __name__ == "__main__":
     app.run()
+
 
 
