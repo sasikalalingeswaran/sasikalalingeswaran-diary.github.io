@@ -3,7 +3,7 @@ from model import db, diary_login,Diary
 from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from sqlalchemy.exc import IntegrityError
-import os
+import re
 
 app = Flask(__name__)
 app.secret_key = "something_12345"
@@ -11,7 +11,6 @@ bcrypt=Bcrypt(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:Krishnapriya22@localhost/my_diary"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("postgresql://diary_db_dgut_user:YLCEmEXFvAg6FQqMTGCr5LlC2YIo9ik1@dpg-d6g5g4kr85hc73b6fe2g-a/diary_db_dgut")
 
 db.init_app(app)
 migrate = Migrate(app,db)
@@ -49,35 +48,49 @@ def login():
 @app.route('/register',methods=['GET','POST'])
 def register():
     failure=''
+    user_error=''
+    pass_error=''
+    msg=''
     if request.method=='POST':
         username=request.form['username']
+        user_pattern=r'^.{8,}$'
+        if not re.search(user_pattern,username):
+            user_error="*Username must contain 8 characters"
         password=request.form['password']
-        hashed_password=bcrypt.generate_password_hash(password).decode('UTF-8')
-        email=request.form['email']
-        session['email']=email
-        new_user=diary_login(username=username,password=hashed_password,email=email)
-        try:
-            db.session.add(new_user)
-            db.session.commit()
-            msg="Registered Successfully!"
-            return render_template('register.html',msg=msg)
-        except IntegrityError:
-            db.session.rollback()
-            failure='Username already exists!'
-        return render_template('register.html',failure=failure)
-    return render_template('register.html')
+        pass_pattern=r'[!@#$%&]'
+        if not re.search(pass_pattern,password):
+            pass_error="*Password must contain one special character "
+        if not user_error and not pass_error:
+            hashed_password=bcrypt.generate_password_hash(password).decode('UTF-8')
+            email=request.form['email']
+            session['email']=email
+            new_user=diary_login(username=username,password=hashed_password,email=email)
+            try:
+                db.session.add(new_user)
+                db.session.commit()
+                msg="Registered Successfully!"
+            except IntegrityError:
+                db.session.rollback()
+                failure='Username or email already exists!'
+    return render_template('register.html',msg=msg,user_error=user_error,pass_error=pass_error,failure=failure)
 
 @app.route('/add',methods=["GET","POST"])
 def add():
     if request.method=="POST":
         date=request.form["date"]
         textarea=request.form["textarea"]
-        if 'happy' in textarea.lower() or 'excited' in textarea.lower():
-            mood='Happy'
-        elif 'sad' in textarea or 'not happy' in textarea or 'bad' in textarea.lower():
-            mood='Sad'
+        positive=["happy","not sad","cheerful","good","excited"]
+        negative=["sad","not happy","not cheerful","not good","not excited","not feeling good"]
+        is_positive=any(word in textarea for word in positive)
+        is_negative=any(word in textarea for word in negative)
+        if is_positive and is_negative:
+            mood="Neutral"
+        elif is_negative:
+            mood="Sad Mood"
+        elif is_positive:
+            mood="Happy mood"
         else:
-            mood='Neutral'
+            mood="None"
         new_entry=Diary(date_entry=date,text_area=textarea,mood=mood,user_id = session['id'])
         db.session.add(new_entry)
         db.session.commit()
@@ -107,7 +120,3 @@ def logout():
 
 if __name__ == "__main__":
     app.run()
-
-
-
-
