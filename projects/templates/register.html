@@ -12,7 +12,9 @@
         <div class="msg">{{msg}}</div>
         <div class="failure">{{failure}}</div>
         <input type="text" name="username" required placeholder="username">
+        <div class="user_error">{{user_error}}</div>
         <input type="password" name="password" required placeholder="password">
+        <div class="pass_error">{{pass_error}}</div>
         <input type="email" name="email" required placeholder="email">
         <input type="submit" value="Register">
         <p class="bottom">Already Registered?<a href="{{ url_for('login') }}">Login</a></p>
