@@ -4,12 +4,13 @@ from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from sqlalchemy.exc import IntegrityError
 import re
+import os
 
 app = Flask(__name__)
 app.secret_key = "something_12345"
-bcrypt=Bcrypt(app)
+bcrypt=Bcrypt()
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:Krishnapriya22@localhost/my_diary"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
@@ -86,9 +87,9 @@ def add():
         if is_positive and is_negative:
             mood="Neutral"
         elif is_negative:
-            mood="Sad Mood"
+            mood="Sad"
         elif is_positive:
-            mood="Happy mood"
+            mood="Happy"
         else:
             mood="None"
         new_entry=Diary(date_entry=date,text_area=textarea,mood=mood,user_id = session['id'])
@@ -120,3 +121,4 @@ def logout():
 
 if __name__ == "__main__":
     app.run()
+
