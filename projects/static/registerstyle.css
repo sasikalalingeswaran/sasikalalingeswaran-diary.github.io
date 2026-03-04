@@ -86,7 +86,7 @@ input[type=submit]:hover{
 .failure{
     color: red;
     font-size: 15px;
-    margin-left: 75px;
+    margin-left: 70px;
 }
 a{
     color: blue;
@@ -98,4 +98,20 @@ a:hover{
 .bottom{
     margin-left: 70px;
     margin-top: 0px;
+}
+.user_error{
+    position: absolute;
+    top: 250px;
+    margin-left: 20px;
+    font-size: 10px;
+    color: red;
+    font-weight: bold;
+}
+.pass_error{
+    position: absolute;
+    top: 300px;
+    margin-left: 20px;
+    font-size: 10px;
+    color: red;
+    font-weight: bold;
 }
