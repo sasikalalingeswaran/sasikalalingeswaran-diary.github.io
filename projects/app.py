@@ -4,13 +4,12 @@ from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from sqlalchemy.exc import IntegrityError
 import re
-import os
 
 app = Flask(__name__)
 app.secret_key = "something_12345"
-bcrypt=Bcrypt()
+bcrypt=Bcrypt(app)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:Krishnapriya22@localhost/my_diary"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
@@ -80,18 +79,18 @@ def add():
     if request.method=="POST":
         date=request.form["date"]
         textarea=request.form["textarea"]
-        positive=["happy","not sad","cheerful","good","excited"]
-        negative=["sad","not happy","not cheerful","not good","not excited","not feeling good"]
+        positive=["happy","not sad","cheerful","good","excited","glad","nice"]
+        negative=["sad","not happy","not cheerful","not good","not excited","not feeling good","low","heavy","hard"]
         is_positive=any(word in textarea for word in positive)
         is_negative=any(word in textarea for word in negative)
         if is_positive and is_negative:
             mood="Neutral"
         elif is_negative:
-            mood="Sad"
+            mood="Sad Mood"
         elif is_positive:
-            mood="Happy"
+            mood="Happy mood"
         else:
-            mood="None"
+            mood="Neutral"
         new_entry=Diary(date_entry=date,text_area=textarea,mood=mood,user_id = session['id'])
         db.session.add(new_entry)
         db.session.commit()
